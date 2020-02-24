@@ -123,10 +123,10 @@ namespace S2.OOP.Encapsulation
         {
             get
             {
-                (bool isValid, string errorMessage) validationResult = ValidateName(Cpr);
+                (bool isValid, string errorMessage) validationResult = ValidateCpr(Cpr);
                 if(!validationResult.isValid)
                 {
-                    throw new ArgumentOutOfRangeException(nameof(Lastname), validationResult.errorMessage);
+                    throw new ArgumentOutOfRangeException(nameof(Birthdate), validationResult.errorMessage);
                 }
                 else
                 {
@@ -193,7 +193,7 @@ namespace S2.OOP.Encapsulation
             {
                 return (false, "The name must not contain spaces");
             }
-            if(name.Any(c => Char.IsDigit(c)))
+            if(name.Any(c => Char.IsNumber(c)))
             {
                 return (false, "The name must not contain numbers");
             }

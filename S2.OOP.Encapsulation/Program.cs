@@ -8,9 +8,9 @@ namespace S2.OOP.Encapsulation
         {
             try
             {
-                Person employee = new Person("Fuq", "Yu", "3105018765", Gender.Male);
+                Person person = new Person("Fuq", "Yu", "3105018765", Gender.Male);
 
-                Console.WriteLine($"{employee.Firstname}, {employee.Lastname}, {employee.Cpr}, {employee.Birthdate}");
+                Console.WriteLine($"{person.Firstname}, {person.Lastname}, {person.Cpr}, {person.Gender}, {person.Birthdate}");
             }
             catch(ArgumentException ex)
             {
