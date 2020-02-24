@@ -6,19 +6,15 @@ namespace S2.OOP.Encapsulation
     {
         static void Main()
         {
-
-            string input = "3105018765";
-
-            (bool isValid, string errorMessage) validationResult = Person.ValidateCpr(input);
-            if(!validationResult.isValid)
+            try
             {
-                Console.WriteLine(validationResult.errorMessage);
-            }
-            else
-            {
-                Person employee = new Person("Fuq", "Yu", input, Gender.Male);
+                Person employee = new Person("Fuq", "Yu", "3105018765", Gender.Male);
 
                 Console.WriteLine($"{employee.Firstname}, {employee.Lastname}, {employee.Cpr}, {employee.Birthdate}");
+            }
+            catch(ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
     }

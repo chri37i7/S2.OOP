@@ -58,7 +58,7 @@ namespace S2.OOP.Encapsulation
                 (bool isValid, string errorMessage) validationResult = ValidateName(value);
                 if(!validationResult.isValid)
                 {
-                    throw new ArgumentOutOfRangeException(nameof(Firstname), validationResult.errorMessage);
+                    throw new ArgumentException(nameof(Firstname), validationResult.errorMessage);
                 }
                 if(value != firstname)
                 {
@@ -70,7 +70,7 @@ namespace S2.OOP.Encapsulation
         /// <summary>
         /// Gets or sets value of <see cref="lastname"/>
         /// </summary>
-        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        /// <exception cref="ArgumentException"></exception>
         public string Lastname
         {
             get
@@ -82,7 +82,7 @@ namespace S2.OOP.Encapsulation
                 (bool isValid, string errorMessage) validationResult = ValidateName(value);
                 if(!validationResult.isValid)
                 {
-                    throw new ArgumentOutOfRangeException(nameof(Lastname), validationResult.errorMessage);
+                    throw new ArgumentException(nameof(Lastname), validationResult.errorMessage);
                 }
                 if(value != lastname)
                 {
@@ -106,7 +106,7 @@ namespace S2.OOP.Encapsulation
                 (bool isValid, string errorMessage) validationResult = ValidateCpr(value);
                 if(!validationResult.isValid)
                 {
-                    throw new ArgumentException(nameof(Cpr), validationResult.errorMessage);
+                    throw new ArgumentOutOfRangeException(nameof(Cpr), validationResult.errorMessage);
                 }
                 if(cpr != value)
                 {
@@ -192,6 +192,10 @@ namespace S2.OOP.Encapsulation
             if(name.Any(c => Char.IsWhiteSpace(c)))
             {
                 return (false, "The name must not contain spaces");
+            }
+            if(name.Any(c => Char.IsDigit(c)))
+            {
+                return (false, "The name must not contain numbers");
             }
             if(string.IsNullOrEmpty(name))
             {
