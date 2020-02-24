@@ -6,7 +6,18 @@ namespace S2.OOP.Encapsulation
     {
         static void Main()
         {
-            Console.WriteLine("Hello World!");
+
+            string input = "3105018765";
+
+            (bool isValid, string errorMessage) validationResult = Person.ValidateCpr(input);
+            if(!validationResult.isValid)
+            {
+                Console.WriteLine(validationResult.errorMessage);
+            }
+            else
+            {
+                Person employee = new Person("Fuq", "Yu", input);
+            }
         }
     }
 }

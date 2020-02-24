@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 
@@ -92,6 +93,27 @@ namespace S2.OOP.Encapsulation
             Male,
             Female,
             Unspecified
+        }
+
+        public static (bool, string) ValidateCpr(string cpr)
+        {
+            if(cpr.Length != 10)
+            {
+                return (false, "Cpr must be 10 digits");
+            }
+            DateTime date;
+            if(!DateTime.TryParseExact(cpr.Substring(0, 6), "ddMMyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out date))
+            {
+                return (false, "The first six digits are an invalid date");
+            }
+            if(date > DateTime.Now)
+            {
+                return (false, "The first six digits are in the future");
+            }
+            else
+            {
+                return (true, String.Empty);
+            }
         }
 
         public static (bool, string) ValidateName(string name)
