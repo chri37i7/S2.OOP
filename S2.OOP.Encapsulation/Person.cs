@@ -15,11 +15,10 @@ namespace S2.OOP.Encapsulation
 
 
         // Constructor
-        public Person(string firstname, string lastname, DateTime birthday, string cpr)
+        public Person(string firstname, string lastname, string cpr)
         {
             Firstname = firstname;
-
-            Birthday = birthday;
+            Lastname = lastname;
             Cpr = cpr;
         }
 
@@ -32,34 +31,35 @@ namespace S2.OOP.Encapsulation
             }
             set
             {
-                if(value.Any(c => Char.IsWhiteSpace(c)))
+                (bool isValid, string errorMessage) validationResult = ValidateName(value);
+                if(!validationResult.isValid)
                 {
-                    throw new ArgumentException("The name must not contain spaces", nameof(firstname));
-                }
-                if(string.IsNullOrEmpty(value))
-                {
-                    throw new ArgumentNullException(nameof(firstname), "The name cannot be empty");
-                }
-                if(value.Length < 1)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(firstname), "The name cannot be lower than one character");
+                    throw new ArgumentOutOfRangeException(nameof(Firstname), validationResult.errorMessage);
                 }
                 if(value != firstname)
                 {
-                    value = firstname;
+                    firstname = value;
                 }
             }
         }
 
-        public DateTime Birthday
+        public string Lastname
         {
             get
             {
-                return birthday;
+                return lastname;
             }
             set
             {
-                birthday = value;
+                (bool isValid, string errorMessage) validationResult = ValidateName(value);
+                if(!validationResult.isValid)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(Lastname), validationResult.errorMessage);
+                }
+                if(value != lastname)
+                {
+                    lastname = value;
+                }
             }
         }
 
@@ -75,11 +75,43 @@ namespace S2.OOP.Encapsulation
             }
         }
 
+        public DateTime Birthday
+        {
+            get
+            {
+                return birthday;
+            }
+            set
+            {
+                birthday = value;
+            }
+        }
+
         public enum Gender
         {
             Male,
             Female,
             Unspecified
+        }
+
+        public static (bool, string) ValidateName(string name)
+        {
+            if(name.Any(c => Char.IsWhiteSpace(c)))
+            {
+                return (false, "The name must not contain spaces");
+            }
+            if(string.IsNullOrEmpty(name))
+            {
+                return (false, "The name cannot be empty");
+            }
+            if(name.Length < 1)
+            {
+                return (false, "The name cannot be lower than one character");
+            }
+            else
+            {
+                return (true, String.Empty);
+            }
         }
     }
 }
