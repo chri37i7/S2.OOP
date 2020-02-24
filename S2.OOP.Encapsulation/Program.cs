@@ -8,9 +8,9 @@ namespace S2.OOP.Encapsulation
         {
             try
             {
-                Person person = new Person("Ben", "Dover", "240369-8765", Gender.Male);
+                Person person = new Person("ʙᴇɴ", "𝕯𝖔𝖛𝖊𝖗", "2103698765", Gender.Male);
 
-                Console.WriteLine($"{person.Firstname}, {person.Lastname}, {person.Cpr}, {person.Gender}, {person.Birthdate}");
+                Console.WriteLine($"{person.Firstname} {person.Lastname}, {person.Cpr}, {person.Gender}, {person.Birthdate}");
 
                 Console.ReadLine();
             }
