@@ -32,9 +32,9 @@ namespace S2.OOP.Encapsulation
             }
             set
             {
-                if(value.All(c => Char.IsWhiteSpace(c)))
+                if(value.Any(c => Char.IsWhiteSpace(c)))
                 {
-                    throw new ArgumentException("The name must not be all spaces", nameof(firstname));
+                    throw new ArgumentException("The name must not contain spaces", nameof(firstname));
                 }
                 if(string.IsNullOrEmpty(value))
                 {
