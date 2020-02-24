@@ -34,19 +34,19 @@ namespace S2.OOP.Encapsulation
             {
                 if(value.All(c => Char.IsWhiteSpace(c)))
                 {
-                    throw new ArgumentException("The name must not be all spaces", nameof(Firstname));
+                    throw new ArgumentException("The name must not be all spaces", nameof(firstname));
                 }
                 if(string.IsNullOrEmpty(value))
                 {
-                    throw new ArgumentNullException(nameof(Firstname), "The name cannot be empty");
+                    throw new ArgumentNullException(nameof(firstname), "The name cannot be empty");
                 }
                 if(value.Length < 1)
                 {
-                    throw new ArgumentOutOfRangeException(nameof(Firstname), "The name cannot be lower than one character");
+                    throw new ArgumentOutOfRangeException(nameof(firstname), "The name cannot be lower than one character");
                 }
-                if(value != Firstname)
+                if(value != firstname)
                 {
-                    value = Firstname;
+                    value = firstname;
                 }
             }
         }
