@@ -7,7 +7,7 @@ using System.Text;
 namespace S2.OOP.Encapsulation
 {
     /// <summary>
-    /// Gender of a <see cref="Person"/> object
+    /// Gender of a <see cref="Person"/> class object
     /// </summary>
     public enum Gender
     {
@@ -58,7 +58,7 @@ namespace S2.OOP.Encapsulation
                 (bool isValid, string errorMessage) validationResult = ValidateName(value);
                 if(!validationResult.isValid)
                 {
-                    throw new ArgumentException(nameof(Firstname), validationResult.errorMessage);
+                    throw new ArgumentException(validationResult.errorMessage, nameof(Firstname));
                 }
                 if(value != firstname)
                 {
@@ -82,7 +82,7 @@ namespace S2.OOP.Encapsulation
                 (bool isValid, string errorMessage) validationResult = ValidateName(value);
                 if(!validationResult.isValid)
                 {
-                    throw new ArgumentException(nameof(Lastname), validationResult.errorMessage);
+                    throw new ArgumentException(validationResult.errorMessage, nameof(Lastname));
                 }
                 if(value != lastname)
                 {
