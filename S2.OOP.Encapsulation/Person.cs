@@ -84,7 +84,15 @@ namespace S2.OOP.Encapsulation
             }
             set
             {
-                birthday = value;
+                (bool isValid, string errorMessage) validationResult = Person.ValidateCpr(cpr);
+                if(!validationResult.isValid)
+                {
+                    // stuff
+                }
+                else
+                { // 310501  
+                   // Birthday = new DateTime(Convert.ToInt64(cpr.Substring(0, 2)), Convert.ToInt64(cpr.Substring(2, 4), Convert.ToInt64(cpr.Substring(2, 4));
+                }
             }
         }
 
