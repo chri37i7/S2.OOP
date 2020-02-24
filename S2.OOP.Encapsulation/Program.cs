@@ -16,7 +16,9 @@ namespace S2.OOP.Encapsulation
             }
             else
             {
-                Person employee = new Person("Fuq", "Yu", input);
+                Person employee = new Person("Fuq", "Yu", input, Gender.Male);
+
+                Console.WriteLine($"{employee.Firstname}, {employee.Lastname}, {employee.Cpr}, {employee.Birthdate}");
             }
         }
     }

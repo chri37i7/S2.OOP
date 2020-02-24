@@ -6,24 +6,47 @@ using System.Text;
 
 namespace S2.OOP.Encapsulation
 {
-    class Person
+    /// <summary>
+    /// Gender of a <see cref="Person"/> object
+    /// </summary>
+    public enum Gender
+    {
+        Male,
+        Female,
+        Unspecified
+    }
+
+    public class Person
     {
         // Fields
         private string firstname;
         private string lastname;
-        private DateTime birthday;
+        private DateTime birthdate;
         private string cpr;
+        private Gender gender;
 
 
-        // Constructor
-        public Person(string firstname, string lastname, string cpr)
+        /// <summary>
+        /// Creates a new <see cref="Person"/> with the provided <see cref="firstname"/>, <see cref="lastname"/>, <see cref="cpr"/>, and <see cref="gender"/>
+        /// </summary>
+        /// <param name="firstname">The persons firstname</param>
+        /// <param name="lastname">The persons lastname</param>
+        /// <param name="cpr">The persons CPR-number</param>
+        /// <param name="gender">The persons gender</param>
+        /// <exception cref="ArgumentException"></exception>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        public Person(string firstname, string lastname, string cpr, Gender gender)
         {
             Firstname = firstname;
             Lastname = lastname;
             Cpr = cpr;
+            Gender = gender;
         }
 
-        // Properties
+        /// <summary>
+        /// Gets or sets the value of <see cref="firstname"/>
+        /// </summary>
+        /// <exception cref="ArgumentException"></exception>
         public string Firstname
         {
             get
@@ -44,6 +67,10 @@ namespace S2.OOP.Encapsulation
             }
         }
 
+        /// <summary>
+        /// Gets or sets value of <see cref="lastname"/>
+        /// </summary>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
         public string Lastname
         {
             get
@@ -64,6 +91,10 @@ namespace S2.OOP.Encapsulation
             }
         }
 
+        /// <summary>
+        /// Gets or sets the value of <see cref="cpr"/>
+        /// </summary>
+        /// <exception cref="ArgumentException"></exception>
         public string Cpr
         {
             get
@@ -72,45 +103,74 @@ namespace S2.OOP.Encapsulation
             }
             set
             {
-                cpr = value;
+                (bool isValid, string errorMessage) validationResult = ValidateCpr(value);
+                if(!validationResult.isValid)
+                {
+                    throw new ArgumentException(nameof(Cpr), validationResult.errorMessage);
+                }
+                if(cpr != value)
+                {
+                    cpr = value;
+                }
             }
         }
 
-        public DateTime Birthday
+        /// <summary>
+        /// Gets the value of <see cref="birthdate"/>
+        /// </summary>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        public DateTime Birthdate
         {
             get
             {
-                return birthday;
+                (bool isValid, string errorMessage) validationResult = ValidateName(Cpr);
+                if(!validationResult.isValid)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(Lastname), validationResult.errorMessage);
+                }
+                else
+                {
+                    DateTime.TryParseExact(Cpr.Substring(0, 6), "ddMMyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime date);
+
+                    birthdate = date;
+
+                    return birthdate;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the value of <see cref="gender"/>
+        /// </summary>
+        public Gender Gender
+        {
+            get
+            {
+                return gender;
             }
             set
             {
-                (bool isValid, string errorMessage) validationResult = Person.ValidateCpr(cpr);
-                if(!validationResult.isValid)
+                if(gender != value)
                 {
-                    // stuff
-                }
-                else
-                { // 310501  
-                   // Birthday = new DateTime(Convert.ToInt64(cpr.Substring(0, 2)), Convert.ToInt64(cpr.Substring(2, 4), Convert.ToInt64(cpr.Substring(2, 4));
+                    gender = value;
                 }
             }
         }
 
-        public enum Gender
-        {
-            Male,
-            Female,
-            Unspecified
-        }
-
+        /// <summary>
+        /// Validates the input parameter to see if its a valid CPR-number
+        /// </summary>
         public static (bool, string) ValidateCpr(string cpr)
         {
             if(cpr.Length != 10)
             {
-                return (false, "Cpr must be 10 digits");
+                return (false, "A CPR-number must be 10 digits");
             }
-            DateTime date;
-            if(!DateTime.TryParseExact(cpr.Substring(0, 6), "ddMMyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out date))
+            if(cpr.Any(c => Char.IsLetter(c)))
+            {
+                return (false, "A CPR-number cannot containt letters");
+            }
+            if(!DateTime.TryParseExact(cpr.Substring(0, 6), "ddMMyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime date))
             {
                 return (false, "The first six digits are an invalid date");
             }
@@ -124,6 +184,9 @@ namespace S2.OOP.Encapsulation
             }
         }
 
+        /// <summary>
+        /// Validates the input parameter to see if its a valid name
+        /// </summary>
         public static (bool, string) ValidateName(string name)
         {
             if(name.Any(c => Char.IsWhiteSpace(c)))
