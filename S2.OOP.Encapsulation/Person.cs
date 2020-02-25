@@ -26,7 +26,6 @@ namespace S2.OOP.Encapsulation
         private string cpr;
         private Gender gender;
 
-
         /// <summary>
         /// Creates a new <see cref="Person"/> with the provided <see cref="firstname"/>, <see cref="lastname"/>, <see cref="cpr"/>, and <see cref="gender"/>
         /// </summary>
@@ -194,21 +193,9 @@ namespace S2.OOP.Encapsulation
         /// <returns></returns>
         public static (bool, string) ValidateName(string name)
         {
-            if(name.Any(c => Char.IsWhiteSpace(c)))
+            if(!name.All(c => Char.IsLetter(c)))
             {
-                return (false, "The name must not contain spaces");
-            }
-            if(name.Any(c => Char.IsNumber(c)))
-            {
-                return (false, "The name must not contain numbers");
-            }
-            if(string.IsNullOrEmpty(name))
-            {
-                return (false, "The name cannot be empty");
-            }
-            if(name.Length < 1)
-            {
-                return (false, "The name cannot be lower than one character");
+                return (false, "The name must only consist of letters");
             }
             else
             {

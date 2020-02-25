@@ -209,7 +209,7 @@ namespace S2.OOP.Encapsulation
         {
             if(crop.Equals(null))
             {
-                return (false, "The value cannot be null");
+                return (false, "The crop cannot be null");
             }
             if(!Crop.IsDefined(typeof(Crop), crop))
             {
