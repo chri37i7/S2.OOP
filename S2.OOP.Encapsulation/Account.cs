@@ -41,10 +41,10 @@ namespace S2.OOP.Encapsulation
             }
             set
             {
-                (bool isValid, string errorMessage) validationResult = ValidateAccountNumber(value);
-                if(!validationResult.isValid)
+                (bool isValid, string errorMessage) = ValidateAccountNumber(value);
+                if(!isValid)
                 {
-                    throw new ArgumentException(validationResult.errorMessage, nameof(AccountNumber));
+                    throw new ArgumentException(errorMessage, nameof(AccountNumber));
                 }
                 if(accountNumber != value)
                 {
@@ -65,10 +65,10 @@ namespace S2.OOP.Encapsulation
             }
             set
             {
-                (bool isValid, string errorMessage) validationResult = ValidateDepartmentNumber(value);
-                if(!validationResult.isValid)
+                (bool isValid, string errorMessage) = ValidateDepartmentNumber(value);
+                if(!isValid)
                 {
-                    throw new ArgumentException(validationResult.errorMessage, nameof(DepartmentNumber));
+                    throw new ArgumentException(errorMessage, nameof(DepartmentNumber));
                 }
                 if(value != departmentNumber)
                 {
@@ -89,10 +89,10 @@ namespace S2.OOP.Encapsulation
             }
             set
             {
-                (bool isValid, string errorMessage) validationResult = ValidateBalance(value);
-                if(!validationResult.isValid)
+                (bool isValid, string errorMessage) = ValidateBalance(value);
+                if(!isValid)
                 {
-                    throw new ArgumentOutOfRangeException(nameof(Balance), validationResult.errorMessage);
+                    throw new ArgumentOutOfRangeException(nameof(Balance), errorMessage);
                 }
                 if(value != balance)
                 {

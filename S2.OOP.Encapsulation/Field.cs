@@ -55,10 +55,10 @@ namespace S2.OOP.Encapsulation
             }
             set
             {
-                (bool isValid, string errorMessage) validationResult = ValidateNumber(value);
-                if(!validationResult.isValid)
+                (bool isValid, string errorMessage) = ValidateNumber(value);
+                if(!isValid)
                 {
-                    throw new ArgumentOutOfRangeException(nameof(Width), validationResult.errorMessage);
+                    throw new ArgumentOutOfRangeException(nameof(Width), errorMessage);
                 }
                 if(width != value)
                 {
@@ -79,10 +79,10 @@ namespace S2.OOP.Encapsulation
             }
             set
             {
-                (bool isValid, string errorMessage) validationResult = ValidateNumber(value);
-                if(!validationResult.isValid)
+                (bool isValid, string errorMessage) = ValidateNumber(value);
+                if(!isValid)
                 {
-                    throw new ArgumentOutOfRangeException(nameof(Length), validationResult.errorMessage);
+                    throw new ArgumentOutOfRangeException(nameof(Length), errorMessage);
                 }
                 if(length != value)
                 {
@@ -130,10 +130,10 @@ namespace S2.OOP.Encapsulation
             }
             set
             {
-                (bool isValid, string errorMessage) validationResult = ValidateCrop(value);
-                if(!validationResult.isValid)
+                (bool isValid, string errorMessage) = ValidateCrop(value);
+                if(!isValid)
                 {
-                    throw new ArgumentNullException(nameof(Crop), validationResult.errorMessage);
+                    throw new ArgumentNullException(nameof(Crop), errorMessage);
                 }
                 if(crop != value)
                 {

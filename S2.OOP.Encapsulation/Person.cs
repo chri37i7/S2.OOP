@@ -55,10 +55,10 @@ namespace S2.OOP.Encapsulation
             }
             set
             {
-                (bool isValid, string errorMessage) validationResult = ValidateName(value);
-                if(!validationResult.isValid)
+                (bool isValid, string errorMessage) = ValidateName(value);
+                if(!isValid)
                 {
-                    throw new ArgumentException(validationResult.errorMessage, nameof(Firstname));
+                    throw new ArgumentException(errorMessage, nameof(Firstname));
                 }
                 if(value != firstname)
                 {
@@ -79,10 +79,10 @@ namespace S2.OOP.Encapsulation
             }
             set
             {
-                (bool isValid, string errorMessage) validationResult = ValidateName(value);
-                if(!validationResult.isValid)
+                (bool isValid, string errorMessage) = ValidateName(value);
+                if(!isValid)
                 {
-                    throw new ArgumentException(validationResult.errorMessage, nameof(Lastname));
+                    throw new ArgumentException(errorMessage, nameof(Lastname));
                 }
                 if(value != lastname)
                 {
@@ -103,10 +103,10 @@ namespace S2.OOP.Encapsulation
             }
             set
             {
-                (bool isValid, string errorMessage) validationResult = ValidateCpr(value);
-                if(!validationResult.isValid)
+                (bool isValid, string errorMessage) = ValidateCpr(value);
+                if(!isValid)
                 {
-                    throw new ArgumentOutOfRangeException(nameof(Cpr), validationResult.errorMessage);
+                    throw new ArgumentOutOfRangeException(nameof(Cpr), errorMessage);
                 }
                 if(cpr != value)
                 {
@@ -123,10 +123,10 @@ namespace S2.OOP.Encapsulation
         {
             get
             {
-                (bool isValid, string errorMessage) validationResult = ValidateCpr(Cpr);
-                if(!validationResult.isValid)
+                (bool isValid, string errorMessage) = ValidateCpr(Cpr);
+                if(!isValid)
                 {
-                    throw new ArgumentOutOfRangeException(nameof(Birthdate), validationResult.errorMessage);
+                    throw new ArgumentOutOfRangeException(nameof(Birthdate), errorMessage);
                 }
                 else
                 {
@@ -168,7 +168,7 @@ namespace S2.OOP.Encapsulation
             {
                 return (false, "A CPR-number must be 10 digits");
             }
-            if(cpr.Any(c => Char.IsLetter(c)))
+            if(cpr.Any(c => char.IsLetter(c)))
             {
                 return (false, "A CPR-number cannot containt letters");
             }
@@ -182,7 +182,7 @@ namespace S2.OOP.Encapsulation
             }
             else
             {
-                return (true, String.Empty);
+                return (true, string.Empty);
             }
         }
 
@@ -193,13 +193,13 @@ namespace S2.OOP.Encapsulation
         /// <returns></returns>
         public static (bool, string) ValidateName(string name)
         {
-            if(!name.All(c => Char.IsLetter(c)))
+            if(!name.All(c => char.IsLetter(c)))
             {
                 return (false, "The name must only consist of letters");
             }
             else
             {
-                return (true, String.Empty);
+                return (true, string.Empty);
             }
         }
     }
