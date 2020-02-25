@@ -120,12 +120,12 @@ namespace S2.OOP.Encapsulation
                 if(crop == Crop.Wheat)
                 {
                     // 10 kilos per square meter
-                    return (area * 10);
+                    return (area * 20);
                 }
                 if(crop == Crop.Potatoes)
                 {
                     // 20 kilos per square meter
-                    return (area * 20);
+                    return (area * 40);
                 }
                 if(crop == Crop.Oak)
                 {
