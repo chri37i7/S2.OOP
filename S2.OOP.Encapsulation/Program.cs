@@ -12,7 +12,7 @@ namespace S2.OOP.Encapsulation
                 Person person = new Person("Ben", "Dover", "2412048764", Gender.Male);
 
                 Console.WriteLine(
-                    $"Person Class Object:\n\n" +
+                    $"\n\nPerson Class Object:\n\n" +
                     $"Name:      {person.Firstname} {person.Lastname}\n" +
                     $"CPR:       {person.Cpr}\n" +
                     $"Gender:    {person.Gender}\n" +

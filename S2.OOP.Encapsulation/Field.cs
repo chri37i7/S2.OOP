@@ -18,6 +18,7 @@ namespace S2.OOP.Encapsulation
         private double width;
         private double length;
         private Crop crop;
+        private double area;
         private double yield;
 
 
@@ -85,7 +86,9 @@ namespace S2.OOP.Encapsulation
                 }
                 else
                 {
-                    return (length * width);
+                    area = (length * width);
+
+                    return area;
                 }
             }
         }
@@ -114,7 +117,31 @@ namespace S2.OOP.Encapsulation
         {
             get
             {
-                return yield;
+                if(crop == Crop.Wheat)
+                {
+                    // 10 kilos per square meter
+                    return (area * 10);
+                }
+                if(crop == Crop.Potatoes)
+                {
+                    // 20 kilos per square meter
+                    return (area * 20);
+                }
+                if(crop == Crop.Oak)
+                {
+                    // 15 kilos per square meter
+                    return (area * 15);
+                }
+                if(crop == Crop.Carrots)
+                {
+                    // 66.66 kilos per square meter
+                    return (area * 66.6666667);
+                }
+                else
+                {
+                    // Return nothing
+                    return 0;
+                }
             }
         }
 
