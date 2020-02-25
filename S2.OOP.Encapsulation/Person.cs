@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
 
 namespace S2.OOP.Encapsulation
 {
@@ -16,6 +14,9 @@ namespace S2.OOP.Encapsulation
         Unspecified
     }
 
+    /// <summary>
+    /// Represents a <see cref="Person"/> object, and contains <see cref="firstname"/>, <see cref="lastname"/>, <see cref="birthdate"/>, <see cref="cpr"/>, and <see cref="gender"/>
+    /// </summary>
     public class Person
     {
         // Fields

@@ -6,13 +6,19 @@ namespace S2.OOP.Encapsulation
     {
         static void Main()
         {
+            // Person class
             try
             {
-                Person person = new Person("ʙᴇɴ", "𝕯𝖔𝖛𝖊𝖗", "2412048764", Gender.Male);
+                Person person = new Person("Ben", "Dover", "2412048764", Gender.Male);
 
-                Console.WriteLine($"{person.Firstname} {person.Lastname}, {person.Cpr}, {person.Gender}, {person.Birthdate}");
+                Console.WriteLine(
+                    $"Person Class Object:\n\n" +
+                    $"Name:      {person.Firstname} {person.Lastname}\n" +
+                    $"CPR:       {person.Cpr}\n" +
+                    $"Gender:    {person.Gender}\n" +
+                    $"Birthdate: {person.Birthdate.ToString("dd-MM-yyyy")}\n");
 
-                Console.ReadLine();
+                Console.WriteLine();
             }
             catch(ArgumentException ex)
             {
@@ -20,19 +26,43 @@ namespace S2.OOP.Encapsulation
 
                 Console.ReadLine();
             }
+            // Account class
             try
             {
-                Account account = new Account("XD42069420", "X125", -69.0m);
+                Account account = new Account("XD42069420", "X125", 69.0m);
 
-                Console.WriteLine($"{account.AccountNumber}, {account.DepartmentNumber}, {account.Balance}");
+                Console.WriteLine(
+                    $"Account Class Object:\n\n" +
+                    $"Account Number:    {account.AccountNumber}\n" +
+                    $"Department Number: {account.DepartmentNumber}\n" +
+                    $"Balance:           {account.Balance:c}\n");
 
-                Console.ReadLine();
+                Console.WriteLine();
             }
             catch(ArgumentException ex)
             {
                 Console.WriteLine(ex.Message);
 
                 Console.ReadLine();
+            }
+            // Field class
+            try
+            {
+                Field field = new Field(5, 6, Crop.Wheat);
+
+                Console.WriteLine(
+                    $"Field Class Object:\n\n" +
+                    $"Length: {field.Length}\n" +
+                    $"Width:  {field.Width}\n" +
+                    $"Area:   {field.Area}\n" +
+                    $"Crop:   {field.Crop}\n" +
+                    $"Yield:  {field.Yield}\n");
+
+                Console.ReadLine();
+            }
+            catch(ArgumentNullException ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
     }

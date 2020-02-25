@@ -26,13 +26,10 @@ namespace S2.OOP.Encapsulation
             }
             set
             {
-                if(string.IsNullOrEmpty(value))
+                (bool isValid, string errorMessage) validationResult = ValidateAccountNumber(value);
+                if(!validationResult.isValid)
                 {
-                    throw new ArgumentException("Account number cannot be empty", nameof(AccountNumber));
-                }
-                if(value.Length != 10)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(AccountNumber), "The number cannot be higher or lower than 10");
+                    throw new ArgumentException(validationResult.errorMessage, nameof(AccountNumber));
                 }
                 if(accountNumber != value)
                 {
@@ -49,17 +46,10 @@ namespace S2.OOP.Encapsulation
             }
             set
             {
-                if(string.IsNullOrEmpty(value))
+                (bool isValid, string errorMessage) validationResult = ValidateDepartmentNumber(value);
+                if(!validationResult.isValid)
                 {
-                    throw new ArgumentException("The department number cannot be empty", nameof(DepartmentNumber));
-                }
-                if(value.Length != 4)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(DepartmentNumber), "The department number cannot be higher or lower than 4");
-                }
-                if(value.Substring(0, 1).Contains("0"))
-                {
-                    throw new ArgumentException("The first letter of the department number cannot be 0", nameof(DepartmentNumber));
+                    throw new ArgumentException(validationResult.errorMessage, nameof(DepartmentNumber));
                 }
                 if(value != departmentNumber)
                 {
@@ -76,14 +66,63 @@ namespace S2.OOP.Encapsulation
             }
             set
             {
-                if(value < 0.0m)
+                (bool isValid, string errorMessage) validationResult = ValidateBalance(value);
+                if(!validationResult.isValid)
                 {
-                    throw new ArgumentOutOfRangeException(nameof(Balance), "The balance cannot be negative");
+                    throw new ArgumentOutOfRangeException(nameof(Balance), validationResult.errorMessage);
                 }
                 if(value != balance)
                 {
                     balance = value; 
                 }
+            }
+        }
+
+        public static (bool, string) ValidateAccountNumber(string number)
+        {
+            if(string.IsNullOrEmpty(number))
+            {
+                return (false, "Account number cannot be empty");
+            }
+            if(number.Length != 10)
+            {
+                return (false, "The number cannot be higher or lower than 10");
+            }
+            else
+            {
+                return (true, string.Empty);
+            }
+        }
+
+        public static (bool, string) ValidateDepartmentNumber(string number)
+        {
+            if(string.IsNullOrEmpty(number))
+            {
+                return (false, "The department number cannot be empty");
+            }
+            if(number.Length != 4)
+            {
+                return (false, "The department number cannot be higher or lower than 4");
+            }
+            if(number.Substring(0, 1).Contains("0"))
+            {
+                return (false, "The first letter of the department number cannot be 0");
+            }
+            else
+            {
+                return (true, string.Empty);
+            }
+        }
+
+        public static (bool, string) ValidateBalance(decimal balance)
+        {
+            if(balance < 0.0m)
+            {
+                return (false, "The balance cannot be negative");
+            }
+            else
+            {
+                return (true, string.Empty);
             }
         }
     }
