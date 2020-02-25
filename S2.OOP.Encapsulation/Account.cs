@@ -4,6 +4,9 @@ using System.Text;
 
 namespace S2.OOP.Encapsulation
 {
+    /// <summary>
+    /// Represents a <see cref="Account"/> object, containing <see cref="accountNumber"/>, <see cref="departmentNumber"/>, and <see cref="balance"/>
+    /// </summary>
     class Account
     {
         // Fields
@@ -11,6 +14,14 @@ namespace S2.OOP.Encapsulation
         private string departmentNumber;
         private decimal balance;
 
+        /// <summary>
+        /// Creates a new <see cref="Account"/> with the provided <see cref="accountNumber"/>, <see cref="departmentNumber"/>, and <see cref="balance"/>
+        /// </summary>
+        /// <param name="accountNumber"></param>
+        /// <param name="departmentNumber"></param>
+        /// <param name="balance"></param>
+        /// <exception cref="ArgumentException"></exception>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
         public Account(string accountNumber, string departmentNumber, decimal balance)
         {
             AccountNumber = accountNumber;
@@ -18,6 +29,10 @@ namespace S2.OOP.Encapsulation
             Balance = balance;
         }
 
+        /// <summary>
+        /// Gets or sets the value of <see cref="accountNumber"/>
+        /// </summary>
+        /// <exception cref="ArgumentException"></exception>
         public string AccountNumber
         {
             get
@@ -38,6 +53,10 @@ namespace S2.OOP.Encapsulation
             }
         }
 
+        /// <summary>
+        /// Gets or sets the value of <see cref="departmentNumber"/>
+        /// </summary>
+        /// <exception cref="ArgumentException"></exception>
         public string DepartmentNumber
         {
             get
@@ -58,6 +77,10 @@ namespace S2.OOP.Encapsulation
             }
         }
 
+        /// <summary>
+        /// Gets or sets the value of <see cref="balance"/>
+        /// </summary>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
         public decimal Balance
         {
             get
@@ -78,6 +101,11 @@ namespace S2.OOP.Encapsulation
             }
         }
 
+        /// <summary>
+        /// Used to validate a <see cref="accountNumber"/> to see if its a valid number
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns></returns>
         public static (bool, string) ValidateAccountNumber(string number)
         {
             if(string.IsNullOrEmpty(number))
@@ -94,6 +122,11 @@ namespace S2.OOP.Encapsulation
             }
         }
 
+        /// <summary>
+        /// Used to validate a <see cref="departmentNumber"/> to see if its valid number
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns></returns>
         public static (bool, string) ValidateDepartmentNumber(string number)
         {
             if(string.IsNullOrEmpty(number))
@@ -114,6 +147,11 @@ namespace S2.OOP.Encapsulation
             }
         }
 
+        /// <summary>
+        /// Used to validate a <see cref="balance"/> to see if its valid number
+        /// </summary>
+        /// <param name="balance"></param>
+        /// <returns></returns>
         public static (bool, string) ValidateBalance(decimal balance)
         {
             if(balance < 0.0m)

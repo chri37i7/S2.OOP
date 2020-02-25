@@ -159,8 +159,10 @@ namespace S2.OOP.Encapsulation
         }
 
         /// <summary>
-        /// Validates the input parameter to see if its a valid CPR-number
+        ///  Used to validate a <see cref="cpr"/> to see if its a valid CPR-number
         /// </summary>
+        /// <param name="cpr"></param>
+        /// <returns></returns>
         public static (bool, string) ValidateCpr(string cpr)
         {
             if(cpr.Length != 10)
@@ -186,8 +188,10 @@ namespace S2.OOP.Encapsulation
         }
 
         /// <summary>
-        /// Validates the input parameter to see if its a valid name
+        /// Used to validate a <see cref="firstname"/>, or <see cref="lastname"/> to see if its a valid name
         /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public static (bool, string) ValidateName(string name)
         {
             if(name.Any(c => Char.IsWhiteSpace(c)))

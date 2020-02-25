@@ -184,7 +184,7 @@ namespace S2.OOP.Encapsulation
         }
 
         /// <summary>
-        /// Validates a number, to check if its negative.
+        /// Used validate a number to see if its negative
         /// </summary>
         /// <param name="number"></param>
         /// <returns></returns>
@@ -201,7 +201,7 @@ namespace S2.OOP.Encapsulation
         }
 
         /// <summary>
-        /// Validates a <see cref="crop"/> to check if its valid
+        /// Used to validate a <see cref="crop"/> to see if its a valid <see cref="Crop"/>
         /// </summary>
         /// <param name="crop"></param>
         /// <returns></returns>
