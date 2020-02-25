@@ -5,7 +5,7 @@ using System.Linq;
 namespace S2.OOP.Encapsulation
 {
     /// <summary>
-    /// Gender of a <see cref="Person"/> class object
+    /// <see cref="Gender"/> of a <see cref="Person"/> class object
     /// </summary>
     public enum Gender
     {
@@ -15,7 +15,7 @@ namespace S2.OOP.Encapsulation
     }
 
     /// <summary>
-    /// Represents a <see cref="Person"/> object, and contains <see cref="firstname"/>, <see cref="lastname"/>, <see cref="birthdate"/>, <see cref="cpr"/>, and <see cref="gender"/>
+    /// Represents a <see cref="Person"/> object, containing <see cref="firstname"/>, <see cref="lastname"/>, <see cref="birthdate"/>, <see cref="cpr"/>, and <see cref="gender"/>
     /// </summary>
     public class Person
     {

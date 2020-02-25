@@ -4,6 +4,9 @@ using System.Text;
 
 namespace S2.OOP.Encapsulation
 {
+    /// <summary>
+    /// <see cref="Crop"/> of a <see cref="Field"/> class object
+    /// </summary>
     public enum Crop
     {
         Potatoes,
@@ -12,6 +15,9 @@ namespace S2.OOP.Encapsulation
         Carrots
     }
 
+    /// <summary>
+    /// Represents a <see cref="Field"/> object, containing <see cref="width"/>, <see cref="length"/>, <see cref="crop"/>, <see cref="area"/>, and <see cref="yield"/>
+    /// </summary>
     class Field
     {
         // Fields
@@ -21,7 +27,15 @@ namespace S2.OOP.Encapsulation
         private double area;
         private double yield;
 
-
+        /// <summary>
+        /// Creates a new <see cref="Field"/> with the provided <see cref="width"/>, <see cref="length"/>, and <see cref="crop"/>
+        /// </summary>
+        /// <param name="width"></param>
+        /// <param name="length"></param>
+        /// <param name="crop"></param>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="InvalidOperationException"></exception>
         public Field(double width, double length, Crop crop)
         {
             Width = width;
@@ -29,7 +43,10 @@ namespace S2.OOP.Encapsulation
             Crop = crop;
         }
 
-
+        /// <summary>
+        /// Gets or sets the value of <see cref="width"/>
+        /// </summary>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
         public double Width
         {
             get
@@ -50,6 +67,10 @@ namespace S2.OOP.Encapsulation
             }
         }
 
+        /// <summary>
+        /// Gets or sets the value of <see cref="length"/>
+        /// </summary>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
         public double Length
         {
             get
@@ -70,6 +91,10 @@ namespace S2.OOP.Encapsulation
             }
         }
 
+        /// <summary>
+        /// Gets the value of <see cref="area"/> by multiplying <see cref="width"/> and <see cref="length"/>
+        /// </summary>
+        /// <exception cref="InvalidOperationException"></exception>
         public double Area
         {
             get
@@ -93,6 +118,10 @@ namespace S2.OOP.Encapsulation
             }
         }
 
+        /// <summary>
+        /// Gets or sets the value of <see cref="crop"/>
+        /// </summary>
+        /// <exception cref="ArgumentNullException"></exception>
         public Crop Crop
         {
             get
@@ -113,6 +142,10 @@ namespace S2.OOP.Encapsulation
             }
         }
 
+        /// <summary>
+        /// Gets the <see cref="yield"/> by multiplying the <see cref="area"/> with a certain kilos per square meter,
+        /// determined by which <see cref="crop"/> is set.
+        /// </summary>
         public double Yield
         {
             get
@@ -120,31 +153,41 @@ namespace S2.OOP.Encapsulation
                 if(crop == Crop.Wheat)
                 {
                     // 10 kilos per square meter
-                    return (area * 20);
+                    yield = (area * 20);
+                    return yield;
                 }
                 if(crop == Crop.Potatoes)
                 {
                     // 20 kilos per square meter
-                    return (area * 40);
+                    yield = (area * 40);
+                    return yield;
                 }
                 if(crop == Crop.Oak)
                 {
                     // 15 kilos per square meter
-                    return (area * 15);
+                    yield = (area * 15);
+                    return yield;
                 }
                 if(crop == Crop.Carrots)
                 {
                     // 66.66 kilos per square meter
-                    return (area * 66.6666667);
+                    yield = (area * 66.6666667);
+                    return yield;
                 }
                 else
                 {
                     // Return nothing
-                    return 0;
+                    yield = 0;
+                    return yield;
                 }
             }
         }
 
+        /// <summary>
+        /// Validates a number, to check if its negative.
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns></returns>
         public (bool, string) ValidateNumber(double number)
         {
             if(number <= 0)
@@ -157,6 +200,11 @@ namespace S2.OOP.Encapsulation
             }
         }
 
+        /// <summary>
+        /// Validates a <see cref="crop"/> to check if its valid
+        /// </summary>
+        /// <param name="crop"></param>
+        /// <returns></returns>
         public static (bool, string) ValidateCrop(Crop crop)
         {
             if(crop.Equals(null))
