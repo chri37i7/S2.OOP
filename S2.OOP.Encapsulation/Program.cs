@@ -6,6 +6,15 @@ namespace S2.OOP.Encapsulation
     {
         static void Main()
         {
+            CreatePerson();
+
+            CreateAccount();
+
+            CreateField();
+        }
+
+        static void CreatePerson()
+        {
             // Person class
             try
             {
@@ -26,6 +35,10 @@ namespace S2.OOP.Encapsulation
 
                 Console.ReadLine();
             }
+        }
+
+        static void CreateAccount()
+        {
             // Account class
             try
             {
@@ -45,6 +58,10 @@ namespace S2.OOP.Encapsulation
 
                 Console.ReadLine();
             }
+        }
+
+        static void CreateField()
+        {
             // Field class
             try
             {
