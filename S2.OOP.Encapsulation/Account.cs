@@ -11,6 +11,13 @@ namespace S2.OOP.Encapsulation
         private string departmentNumber;
         private decimal balance;
 
+        public Account(string accountNumber, string departmentNumber, decimal balance)
+        {
+            AccountNumber = accountNumber;
+            DepartmentNumber = departmentNumber;
+            Balance = balance;
+        }
+
         public string AccountNumber
         {
             get
@@ -69,7 +76,7 @@ namespace S2.OOP.Encapsulation
             }
             set
             {
-                if(balance < 0.0m)
+                if(value < 0.0m)
                 {
                     throw new ArgumentOutOfRangeException(nameof(Balance), "The balance cannot be negative");
                 }
