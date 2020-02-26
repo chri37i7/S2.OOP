@@ -6,7 +6,29 @@ namespace S2.OOP.Composition
     {
         static void Main()
         {
-            Console.WriteLine("Hello World!");
+            try
+            {
+                Person person = new Person(
+                    "Ben",
+                    "Dover",
+                    new DateTime(2001, 05, 02),
+                    new ContactInformation(
+                        "ben@dover.co.ck",
+                        "42069420"));
+
+                int age = person.CalculateAge();
+
+                Console.WriteLine(
+                    $"Navn:            {person.Firstname} {person.Lastname}\n" +
+                    $"Fødselsdagsdato: {person.BirthDate.ToString("dd-MM-yyyy")}\n" +
+                    $"Alder:           {age}\n" +
+                    $"Email:           {person.ContactInformation.Mail}\n" +
+                    $"Phone:           {person.ContactInformation.Phone}");
+            }
+            catch(ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

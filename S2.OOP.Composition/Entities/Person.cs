@@ -68,6 +68,11 @@ namespace S2.OOP.Composition
             }
             set
             {
+                (bool isValid, string errorMessage) = ValidateBirthDate(value);
+                if(!isValid)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(BirthDate), errorMessage);
+                }
                 if(birthDate != value)
                 {
                     birthDate = value;
@@ -95,6 +100,20 @@ namespace S2.OOP.Composition
             }
         }
 
+        public int CalculateAge()
+        {
+            // String for birthdate
+            string birth = birthDate.ToString("yyyyMMdd");
+            // String for now
+            string now = DateTime.Now.ToString("yyyyMMdd");
+
+            // Subtract birth from now, and keep the first 2 digits
+            int result = ((Convert.ToInt32(now) - Convert.ToInt32(birth)) / 10000);
+
+            // Return result
+            return result;
+        }
+
         public static (bool, string) ValidateName(string name)
         {
             if(!name.Any(c => char.IsLetter(c)))
@@ -116,6 +135,22 @@ namespace S2.OOP.Composition
             if(string.IsNullOrEmpty(contactInformation.Phone))
             {
                 return (false, "The property \"Phone\" cannot be null, or empty");
+            }
+            else
+            {
+                return (true, string.Empty);
+            }
+        }
+
+        public static (bool, string) ValidateBirthDate(DateTime date)
+        {
+            if(date >= DateTime.Now)
+            {
+                return (false, "The date is in the future");
+            }
+            if(date.Year < (DateTime.Now.Year - 100))
+            {
+                return (false, "The date cannot be more than 100 years ago"); 
             }
             else
             {
