@@ -7,88 +7,88 @@ namespace S2.OOP.Composition
     {
         static void Main()
         {
-            (bool isTrue, ContactInformation contactInformation) = CreateContactInformation("ben@dover.co.ck", "+4576876576");
-            if(isTrue)
-            {
-                (bool isValid, Person person) = CreatePerson("Ben", "Dover", new DateTime(2001, 05, 02), contactInformation);
-                if(isValid)
-                {
-                    List<Person> persons = new List<Person>();
+            //(bool isTrue, ContactInformation contactInformation) = CreateContactInformation();
+            //if(isTrue)
+            //{
+            //    (bool isValid, Person person) = CreatePerson();
+            //    if(isValid)
+            //    {
+            //        List<Person> persons = new List<Person>();
 
-                    persons.Add(person);
+            //        persons.Add(person);
 
-                    (bool isCorrect, Address address) = CreateAddress("Vårager", "13", "7120", "Vejle", "Denmark", persons);
-                    if(isCorrect)
-                    {
-                        Console.WriteLine(
-                            $"Addres information:\n\n" +
-                            $"Street name:  {address.StreetName},\n" +
-                            $"Street number:{address.StreetNumber},\n" +
-                            $"Zip code:     {address.Zip},\n" +
-                            $"City:         {address.City},\n" +
-                            $"Country:      {address.Country},\n" +
-                            $"Residents:    {address.Persons.Count}\n\n");
+            //        (bool isCorrect, Address address) = CreateAddress();
+            //        if(isCorrect)
+            //        {
+            //            Console.WriteLine(
+            //                $"Addres information:\n\n" +
+            //                $"Street name:  {address.StreetName},\n" +
+            //                $"Street number:{address.StreetNumber},\n" +
+            //                $"Zip code:     {address.Zip},\n" +
+            //                $"City:         {address.City},\n" +
+            //                $"Country:      {address.Country},\n" +
+            //                $"Residents:    {address.Persons.Count}\n\n");
 
-                        foreach(Person resident in persons)
-                        {
-                            int age = resident.CalculateAge();
+            //            foreach(Person resident in persons)
+            //            {
+            //                int age = resident.CalculateAge();
 
-                            Console.WriteLine($"Person information:\n\n" +
-                            $"Firstname: {resident.Firstname},\n" +
-                            $"Lastname:  {resident.Lastname},\n" +
-                            $"Age:       {age},\n" +
-                            $"Birthdate: {resident.BirthDate.ToString("dd-MM-yyyy")},\n" +
-                            $"Email:     {resident.ContactInformation.Mail},\n" +
-                            $"Phone:     {resident.ContactInformation.Phone}\n\n");
-                        }
-                    }
-                }
-            }
+            //                Console.WriteLine($"Person information:\n\n" +
+            //                $"Firstname: {resident.Firstname},\n" +
+            //                $"Lastname:  {resident.Lastname},\n" +
+            //                $"Age:       {age},\n" +
+            //                $"Birthdate: {resident.BirthDate.ToString("dd-MM-yyyy")},\n" +
+            //                $"Email:     {resident.ContactInformation.Mail},\n" +
+            //                $"Phone:     {resident.ContactInformation.Phone}\n\n");
+            //            }
+            //        }
+            //    }
+            //}
         }
 
-        static (bool, ContactInformation) CreateContactInformation(string email, string phone)
+        static ContactInformation CreateContactInformation()
         {
             try
             {
-                ContactInformation contactInformation = new ContactInformation(email, phone);
+                ContactInformation contactInformation = new ContactInformation("ben@dover.co.ck", "+4576876576");
 
-                return (true, contactInformation);
+                return contactInformation;
             }
             catch(ArgumentException ex)
             {
                 Console.WriteLine(ex.Message);
 
-                return (false, null);
+                return null;
             }
         }
 
-        static (bool, Address) CreateAddress(string streetName, string streetNumber, string zip, string city, string country, List<Person> persons)
+        static Address CreateAddress(List<Person> persons)
         {
             try
             {
-                Address address = new Address(streetName, streetNumber, zip, city, country, persons);
+                Address address = new Address("Vårager", "13", "7120", "Vejle", "Denmark", persons);
 
-                return (true, address);
+                return address;
             }
             catch(ArgumentException ex)
             {
                 Console.WriteLine(ex.Message);
-                return (false, null);
+                return null;
             }
         }
 
-        static (bool, Person) CreatePerson(string firstname, string lastname, DateTime birthDate, ContactInformation contactInformation)
+        static Person CreatePerson(ContactInformation contactInformation)
         {
             try
             {
-                Person person = new Person(firstname, lastname, birthDate, contactInformation);
+                Person person = new Person("Ben", "Dover", new DateTime(2001, 05, 02), contactInformation);
 
-                return (true, person);
+                return person;
             }
             catch(ArgumentException ex)
             {
                 Console.WriteLine(ex.Message);
-                return (false, null);
+                return null;
             }
         }
     }
