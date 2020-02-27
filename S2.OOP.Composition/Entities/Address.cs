@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace S2.OOP.Composition
 {
@@ -32,6 +31,11 @@ namespace S2.OOP.Composition
             }
             set
             {
+                (bool isValid, string errorMessage) = ValidateString(value);
+                if(!isValid)
+                {
+                    throw new ArgumentException(errorMessage, nameof(StreetName));
+                }
                 if(streetName != value)
                 {
                     streetName = value;
@@ -47,6 +51,11 @@ namespace S2.OOP.Composition
             }
             set
             {
+                (bool isValid, string errorMessage) = ValidateString(value);
+                if(!isValid)
+                {
+                    throw new ArgumentException(errorMessage, nameof(StreetNumber));
+                }
                 if(streetNumber != value)
                 {
                     streetNumber = value;
@@ -62,6 +71,11 @@ namespace S2.OOP.Composition
             }
             set
             {
+                (bool isValid, string errorMessage) = ValidateString(value);
+                if(!isValid)
+                {
+                    throw new ArgumentException(errorMessage, nameof(Zip));
+                }
                 if(zip != value)
                 {
                     zip = value;
@@ -129,11 +143,23 @@ namespace S2.OOP.Composition
             return persons.Count();
         }
 
-        public (bool, string) ValidateZip(string zip)
+        public (bool, string) ValidateString(string input)
         {
-            if(string.IsNullOrEmpty(zip))
+            if(string.IsNullOrEmpty(input))
             {
                 return (false, "The value cannot be null, or empty");
+            }
+            else
+            {
+                return (true, string.Empty);
+            }
+        }
+
+        public static (bool, string) ValidatePersons(List<Person> persons)
+        {
+            if(persons.Count < 1)
+            {
+                return (false, "The list must contain 1, or more objects");
             }
             else
             {
