@@ -7,17 +7,17 @@ namespace S2.OOP.Composition
     {
         static void Main()
         {
-            (bool isTrue, ContactInformation contactInformation) = CreateContactInformation();
+            (bool isTrue, ContactInformation contactInformation) = CreateContactInformation("ben@dover.co.ck", "+4576876576");
             if(isTrue)
             {
-                (bool isValid, Person person) = CreatePerson(contactInformation);
+                (bool isValid, Person person) = CreatePerson("Ben", "Dover", new DateTime(2001, 05, 02), contactInformation);
                 if(isValid)
                 {
                     List<Person> persons = new List<Person>();
 
                     persons.Add(person);
 
-                    (bool isCorrect, Address address) = CreateAddress(persons);
+                    (bool isCorrect, Address address) = CreateAddress("Vårager", "13", "7120", "Vejle", "Denmark", persons);
                     if(isCorrect)
                     {
                         Console.WriteLine(
@@ -31,9 +31,12 @@ namespace S2.OOP.Composition
 
                         foreach(Person resident in persons)
                         {
+                            int age = resident.CalculateAge();
+
                             Console.WriteLine($"Person information:\n\n" +
                             $"Firstname: {resident.Firstname},\n" +
                             $"Lastname:  {resident.Lastname},\n" +
+                            $"Age:       {age},\n" +
                             $"Birthdate: {resident.BirthDate.ToString("dd-MM-yyyy")},\n" +
                             $"Email:     {resident.ContactInformation.Mail},\n" +
                             $"Phone:     {resident.ContactInformation.Phone}\n\n");
@@ -43,11 +46,11 @@ namespace S2.OOP.Composition
             }
         }
 
-        static (bool, ContactInformation) CreateContactInformation()
+        static (bool, ContactInformation) CreateContactInformation(string email, string phone)
         {
             try
             {
-                ContactInformation contactInformation = new ContactInformation("ben@dover.co.ck", "+4576876576");
+                ContactInformation contactInformation = new ContactInformation(email, phone);
 
                 return (true, contactInformation);
             }
@@ -59,11 +62,11 @@ namespace S2.OOP.Composition
             }
         }
 
-        static (bool, Address) CreateAddress(List<Person> persons)
+        static (bool, Address) CreateAddress(string streetName, string streetNumber, string zip, string city, string country, List<Person> persons)
         {
             try
             {
-                Address address = new Address("Vårager", "13", "7120", "Vejle", "Denmark", persons);
+                Address address = new Address(streetName, streetNumber, zip, city, country, persons);
 
                 return (true, address);
             }
@@ -74,26 +77,13 @@ namespace S2.OOP.Composition
             }
         }
 
-        static (bool, Person) CreatePerson(ContactInformation contactInformation)
+        static (bool, Person) CreatePerson(string firstname, string lastname, DateTime birthDate, ContactInformation contactInformation)
         {
             try
             {
-                Person person = new Person(
-                    "Ben",
-                    "Dover",
-                    new DateTime(2001, 05, 02),
-                    contactInformation);
+                Person person = new Person(firstname, lastname, birthDate, contactInformation);
 
                 return (true, person);
-
-                //int age = person.CalculateAge();
-
-                //Console.WriteLine(
-                //    $"Navn:            {person.Firstname} {person.Lastname}\n" +
-                //    $"Fødselsdagsdato: {person.BirthDate.ToString("dd-MM-yyyy")}\n" +
-                //    $"Alder:           {age}\n" +
-                //    $"Email:           {person.ContactInformation.Mail}\n" +
-                //    $"Phone:           {person.ContactInformation.Phone}");
             }
             catch(ArgumentException ex)
             {
