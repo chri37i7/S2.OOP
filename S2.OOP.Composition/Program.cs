@@ -14,7 +14,7 @@ namespace S2.OOP.Composition
                     new DateTime(2001, 05, 02),
                     new ContactInformation(
                         "ben@dover.co.ck",
-                        "42069420"));
+                        "+4576876576"));
 
                 int age = person.CalculateAge();
 

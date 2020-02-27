@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace S2.OOP.Composition
 {
@@ -23,7 +24,7 @@ namespace S2.OOP.Composition
             }
             set
             {
-                (bool isValid, string errorMessage) = ValidateInformation(value);
+                (bool isValid, string errorMessage) = ValidateEmail(value);
                 if(!isValid)
                 {
                     throw new ArgumentException(errorMessage, nameof(Mail));
@@ -43,7 +44,7 @@ namespace S2.OOP.Composition
             }
             set
             {
-                (bool isValid, string errorMessage) = ValidateInformation(value);
+                (bool isValid, string errorMessage) = ValidatePhoneNumber(value);
                 if(!isValid)
                 {
                     throw new ArgumentException(errorMessage, nameof(Phone));
@@ -55,11 +56,29 @@ namespace S2.OOP.Composition
             }
         }
 
-        public static (bool, string) ValidateInformation(string info)
+        public static (bool, string) ValidatePhoneNumber(string number)
         {
-            if(string.IsNullOrEmpty(info))
+            string regex = @"^\+(?:[0-9]●?){6,14}[0-9]$";
+
+            if(!Regex.IsMatch(number, regex))
+            {
+                return (false, "The value is not a valid international phone number");
+            }
+            else
+            {
+                return (true, string.Empty);
+            }
+        }
+
+        public static (bool, string) ValidateEmail(string email)
+        {
+            if(string.IsNullOrEmpty(email))
             {
                 return (false, "The value cannot be null, or empty");
+            }
+            if(!email.Contains("@"))
+            {
+                return (false, "The email must contain an \"@\"");
             }
             else
             {

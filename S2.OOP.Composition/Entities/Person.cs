@@ -116,7 +116,7 @@ namespace S2.OOP.Composition
 
         public static (bool, string) ValidateName(string name)
         {
-            if(!name.Any(c => char.IsLetter(c)))
+            if(!name.All(c => char.IsLetter(c)))
             {
                 return (false, "The name must only contain letters");
             }
