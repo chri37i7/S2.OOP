@@ -124,7 +124,10 @@ namespace S2.OOP.Composition
             }
         }
 
-
+        public int GetNumberOfPeople()
+        {
+            return persons.Count();
+        }
 
         public (bool, string) ValidateZip(string zip)
         {
