@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace S2.OOP.Composition
 {
-    class Program
+    public class Program
     {
         static void Main()
         {

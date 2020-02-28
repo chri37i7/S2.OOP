@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace S2.OOP.Composition
 {
-    class Address
+    public class Address
     {
         private string streetName;
         private string streetNumber;

@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace S2.OOP.Composition
 {
-    class ContactInformation
+    public class ContactInformation
     {
         private string mail;
         private string phone;

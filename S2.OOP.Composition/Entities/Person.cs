@@ -6,7 +6,7 @@ namespace S2.OOP.Composition
     /// <summary>
     /// Represents a <see cref="Person"/> object, containing <see cref="firstname"/>, <see cref="lastname"/>, <see cref="birthDate"/>, and <see cref="contactInformation"/>
     /// </summary>
-    class Person
+    public class Person
     {
         // Fields
         private string firstname;
@@ -194,7 +194,7 @@ namespace S2.OOP.Composition
             }
             if(date.Year < (DateTime.Now.Year - 100))
             {
-                return (false, "The date cannot be more than 100 years ago"); 
+                return (false, "The date cannot be more than 100 years ago");
             }
             else
             {
