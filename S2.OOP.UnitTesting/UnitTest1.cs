@@ -8,6 +8,15 @@ namespace S2.OOP.UnitTesting
     public class UnitTesting
     {
         [Fact]
+        public void CreateContactInformation()
+        {
+            Assert.Throws<ArgumentException>(
+                ()=> new ContactInformation("ben@dover.co.ck", "+4576a76576")
+            );
+        }
+
+
+        [Fact]
         public void CreateObjects()
         {
             // Person list
