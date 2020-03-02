@@ -23,9 +23,17 @@ namespace S2.OOP.Inheritance.Entities
 
             set
             {
-                if(height != value)
+                bool isValid = IsFileTooLarge();
+                if(!isValid)
                 {
-                    height = value;
+                    if(height != value)
+                    {
+                        height = value;
+                    }
+                }
+                else
+                {
+                    throw new ArgumentException("The size is too large", nameof(Height));
                 }
             }
         }
@@ -39,9 +47,17 @@ namespace S2.OOP.Inheritance.Entities
 
             set
             {
-                if(width != value)
+                bool isValid = IsFileTooLarge();
+                if(!isValid)
                 {
-                    width = value;
+                    if(width != value)
+                    {
+                        width = value;
+                    }
+                }
+                else
+                {
+                    throw new ArgumentException("The size is too large", nameof(Width));
                 }
             }
         }

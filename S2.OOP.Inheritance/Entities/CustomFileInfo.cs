@@ -41,9 +41,17 @@ namespace S2.OOP.Inheritance
 
             set
             {
-                if(fileSize != value)
+                bool isValid = IsSizeTooLarge();
+                if(!isValid)
                 {
-                    fileSize = value;
+                    if(fileSize != value)
+                    {
+                        fileSize = value;
+                    }
+                }
+                else
+                {
+                    throw new ArgumentException("The file size is too large", nameof(FileSize));
                 }
             }
         }
