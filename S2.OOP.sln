@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "S2.OOP.Encapsulation", "S2.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "S2.OOP.Composition", "S2.OOP.Composition\S2.OOP.Composition.csproj", "{DBD1D0B5-EC45-4E9D-9165-79FB124E25D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S2.OOP.UnitTesting", "S2.OOP.UnitTesting\S2.OOP.UnitTesting.csproj", "{E34C1164-E548-48F0-A8F2-A2AF0257AEE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "S2.OOP.UnitTesting", "S2.OOP.UnitTesting\S2.OOP.UnitTesting.csproj", "{E34C1164-E548-48F0-A8F2-A2AF0257AEE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S2.OOP.Inheritance", "S2.OOP.Inheritance\S2.OOP.Inheritance.csproj", "{73B0914B-8A35-4A78-9D69-671A987145BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{E34C1164-E548-48F0-A8F2-A2AF0257AEE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E34C1164-E548-48F0-A8F2-A2AF0257AEE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E34C1164-E548-48F0-A8F2-A2AF0257AEE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73B0914B-8A35-4A78-9D69-671A987145BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73B0914B-8A35-4A78-9D69-671A987145BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73B0914B-8A35-4A78-9D69-671A987145BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73B0914B-8A35-4A78-9D69-671A987145BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
