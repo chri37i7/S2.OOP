@@ -2,21 +2,21 @@
 
 namespace S2.OOP.Inheritance
 {
-    class CustomFileInfo
+    abstract class CustomFileInfo
     {
         protected string fileName;
         protected int fileSize;
         protected DateTime creationDate;
 
 
-        public CustomFileInfo(string fileName, int fileSize, DateTime creationDate)
+        protected CustomFileInfo(string fileName, int fileSize, DateTime creationDate)
         {
             FileName = fileName;
             FileSize = fileSize;
             CreationDate = creationDate;
         }
 
-        public string FileName
+        public virtual string FileName
         {
             get
             {
@@ -32,7 +32,7 @@ namespace S2.OOP.Inheritance
             }
         }
 
-        public int FileSize
+        public virtual int FileSize
         {
             get
             {
@@ -56,7 +56,7 @@ namespace S2.OOP.Inheritance
             }
         }
 
-        public DateTime CreationDate
+        public virtual DateTime CreationDate
         {
             get
             {
@@ -77,7 +77,7 @@ namespace S2.OOP.Inheritance
             return fileName;
         }
 
-        public bool IsSizeTooLarge()
+        public virtual bool IsSizeTooLarge()
         {
             if(fileSize > 45)
             {

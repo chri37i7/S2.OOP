@@ -14,7 +14,7 @@ namespace S2.OOP.Inheritance.Entities
             Width = width;
         }
 
-        public int Height
+        public virtual int Height
         {
             get
             {
@@ -23,7 +23,7 @@ namespace S2.OOP.Inheritance.Entities
 
             set
             {
-                bool isValid = IsFileTooLarge();
+                bool isValid = IsSizeTooLarge();
                 if(!isValid)
                 {
                     if(height != value)
@@ -47,7 +47,7 @@ namespace S2.OOP.Inheritance.Entities
 
             set
             {
-                bool isValid = IsFileTooLarge();
+                bool isValid = IsSizeTooLarge();
                 if(!isValid)
                 {
                     if(width != value)
@@ -62,7 +62,7 @@ namespace S2.OOP.Inheritance.Entities
             }
         }
 
-        public bool IsFileTooLarge()
+        public override bool IsSizeTooLarge()
         {
             if(fileSize > 45)
             {

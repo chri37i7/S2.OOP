@@ -4,7 +4,7 @@ namespace S2.OOP.Inheritance.Entities
 {
     class VideoFileInfo : ImageFileInfo
     {
-        private int duration;
+        protected int duration;
 
         public VideoFileInfo(int duration, int width, int height, string fileName, int fileSize, DateTime creationDate)
             : base(height, width, fileName, fileSize, creationDate)
@@ -12,7 +12,7 @@ namespace S2.OOP.Inheritance.Entities
             Duration = duration;
         }
 
-        public int Duration
+        public virtual int Duration
         {
             get
             {
