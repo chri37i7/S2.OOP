@@ -37,7 +37,7 @@ namespace S2.OOP.UnitTesting
 
 
             // Address
-            Address address = new Address("Vårager", "13", "7120", "Vejle", "Denmark", persons);
+            // Address address = new Address("Vårager", "13", "7120", "Vejle", "Denmark", persons);
         }
     }
 }
