@@ -13,7 +13,7 @@ namespace CourtBooking.ManualTest
         {
             WriteMany();
 
-            //WriteSingle();
+            WriteSingle(1);
         }
 
         public static void WriteMany()
@@ -28,13 +28,13 @@ namespace CourtBooking.ManualTest
             }
         }
 
-        public static void WriteSingle()
+        public static void WriteSingle(int id)
         {
             // Create single object
-            Booking booking = service.GetSingle(1);
+            Booking booking = service.GetSingle(id);
 
             // Output object
-            Console.WriteLine(booking);
+            Console.WriteLine($"\n{booking}");
         }
     }
 }
