@@ -11,13 +11,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "S2.OOP.UnitTesting", "S2.OO
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "S2.OOP.Inheritance", "S2.OOP.Inheritance\S2.OOP.Inheritance.csproj", "{73B0914B-8A35-4A78-9D69-671A987145BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapeEntities", "ShapeEntities\ShapeEntities.csproj", "{E0A2B798-010F-4D25-9616-095EB651D25E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShapeEntities", "ShapeEntities\ShapeEntities.csproj", "{E0A2B798-010F-4D25-9616-095EB651D25E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Inheritance", "Inheritance", "{9CED285B-A2C8-4529-B1F6-95DE1390DF9D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shapes", "Shapes", "{4D657193-405B-4EC8-9F1A-4050962C4DFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapeManualTest", "ShapeManualTest\ShapeManualTest.csproj", "{D594FFEA-2807-4AAC-B369-8BECC352DEBE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShapeManualTest", "ShapeManualTest\ShapeManualTest.csproj", "{D594FFEA-2807-4AAC-B369-8BECC352DEBE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebService", "WebService", "{82DF5B81-A036-4AF4-8B02-F5782EBC2E59}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
